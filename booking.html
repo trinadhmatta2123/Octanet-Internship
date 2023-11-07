@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('places.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 2em auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5em;
+            color: #007BFF;
+            position: relative;
+        }
+
+       
+        
+
+        .booking-form {
+            display: grid;
+            grid-gap: 1em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+
+        select, input[type="date"], .meals input[type="checkbox"] + label {
+            width: 100%;
+            padding: 1em;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        select:focus, input[type="date"]:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 10px rgba(0, 91, 179, 0.5);
+        }
+
+        .meals {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        .meals input[type="checkbox"] {
+            display: none;
+        }
+
+        .meals input[type="checkbox"] + label {
+            padding: 1em;
+            border: 2px solid #007BFF;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .meals input[type="checkbox"]:checked + label {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        button {
+            padding: 1em 2em;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.2s;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-5px);
+        }
+
+ .modal {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+    }
+
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2em;
+        width: 80%;
+        max-width: 500px;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        text-align: center;
+color:blue;
+font-family:italic;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 0.5em;
+        right: 0.5em;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
+    .modal h2 {
+        margin-top: 0;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="booking-container">
+        <h1>Booking Details</h1>
+<img src="facilities.png" width="100%" height="30%" alt="pics">
+        <form class="booking-form" action="submit-booking.html" method="post">
+            <div>
+                <label for="checkin-date">Check-in Date:</label>
+                <input type="date" id="checkin-date" name="checkin_date" required>
+            </div>
+            <div>
+                <label for="guests">Guests:</label>
+                <select id="guests" name="guest_count">
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <!-- Add more guests options as needed -->
+                </select>
+            </div>
+            <div>
+                <label for="rooms">Rooms:</label>
+                <select id="rooms" name="room_count">
+                    <option value="1">1 Room</option>
+                    <option value="2">2 Rooms</option>
+                    <option value="3">3 Rooms</option>
+                    <!-- Add more room options as needed -->
+                </select>
+            </div>
+            <div>
+                <label for="price">Price Range:</label>
+                <select id="price" name="price_range">
+                    <option value="2k">Below 2k</option>
+                    <option value="3k">Below 3k</option>
+                    <option value="5k">Below 5k</option>
+                    <!-- Add more price range options as needed -->
+                </select>
+            </div>
+            <div class="meals">
+                <label>Meals:</label>
+                <input type="checkbox" id="meal1" name="meals[]" value="Breakfast">
+                <label for="meal1">Breakfast</label>
+
+                <input type="checkbox" id="meal2" name="meals[]" value="Lunch">
+                <label for="meal2">Lunch</label>
+
+                <input type="checkbox" id="meal3" name="meals[]" value="Dinner">
+                <label for="meal3">Dinner</label>
+                <input type="checkbox" id="meal4" name="meals[]" value="Snacks">
+                <label for="meal4">Snacks</label>
+                
+                <!-- Add more meals options as needed -->
+            </div>
+            <div>
+                <button type="submit">Submit Booking</button>
+            </div>
+        </form>
+    </div>
+<div class="modal" id="successModal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 >Booking Successful!</h2>
+        <p>For more details, contact: Matta Thrinadh</p><br>
+<p>CEO,ORIGIN company</p><br>
+<p>phn no:5479797979</p>
+    </div>
+</div>
+
+    <!-- You can add your JavaScript here, if needed -->
+<script>
+    // JavaScript for Modal
+    document.querySelector("button[type='submit']").addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Show the modal
+        document.getElementById("successModal").style.display = "block";
+    });
+
+    document.querySelector(".close-btn").addEventListener('click', function () {
+        document.getElementById("successModal").style.display = "none";
+    });
+</script>
+</body>
+</html>
+

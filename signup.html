@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('hotel1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-container {
+            width: 350px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .signup-container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .signup-input {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .firstname, .lastname {
+width: 80%;
+            background-color: #E9F5FF;
+            color: #007BFF;
+        }
+
+        .phone, .gender, .password {
+width:80%;
+            background-color: #FFF3E5;
+            color: #FF6B3D;
+        }
+
+        .signup-button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .signup-button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="signup-container">
+        <h1>Signup</h1>
+        <form action="cityhotels.html" method="post">
+            <input type="text" name="firstname" class="signup-input firstname" placeholder="First Name" required>
+            <input type="text" name="lastname" class="signup-input lastname" placeholder="Last Name" >
+            <input type="tel" name="phone" class="signup-input phone" placeholder="Phone Number" >
+            <select name="gender" class="signup-input gender" >
+                <option value="" disabled selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="password" name="password" class="signup-input password" placeholder="Password" required>
+            <button type="submit" class="signup-button">Signup</button>
+        </form>
+    </div>
+</body>
+
+</html>
